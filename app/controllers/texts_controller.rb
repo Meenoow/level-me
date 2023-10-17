@@ -23,7 +23,9 @@ class TextsController < ApplicationController
       }.to_json
     )
 
-    @output_text = JSON.parse(response.body)['choices'][0]['text']
+    parsed_response = JSON.parse(response.body)
+    @output_text = parsed_response&.dig('choices', 0, 'text')
+
 
     render :index
   end
