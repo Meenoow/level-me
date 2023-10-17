@@ -1,0 +1,16 @@
+<h1>Text Grade Level Converter</h1>
+<%= form_tag texts_path, method: :post do %>
+  <p>
+    <%= text_area_tag :input_text, '', rows: 5, cols: 50 %>
+  </p>
+  <p>
+    <%= select_tag :grade_level, options_for_select(['Elementary', 'Middle School', 'High School', 'College']), include_blank: 'Select Grade Level' %>
+  </p>
+  <p>
+    <%= submit_tag 'Convert Text' %>
+  </p>
+<% end %>
+<div>
+  <h2>Converted Text:</h2>
+  <p><%= @output_text %></p>
+</div>
