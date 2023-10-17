@@ -23,8 +23,14 @@ class TextsController < ApplicationController
       }.to_json
     )
 
+      if response.code != 200
+        # Handle the error, e.g., log or display an error message
+        puts "Error response code: #{response.code}"
+      end
+
       parsed_response = JSON.parse(response.body)
       @output_text = parsed_response.dig('choices', 0, 'text')
+      puts "Parsed Response: #{parsed_response}"
 
 
     render :index
