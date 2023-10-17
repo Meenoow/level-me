@@ -19,12 +19,12 @@ class TextsController < ApplicationController
       },
       body: {
         prompt: "Translate the following text to #{grade_level} grade level: #{input_text}",
-        max_tokens: 100
+        max_tokens: 900
       }.to_json
     )
 
-    parsed_response = JSON.parse(response.body)
-    @output_text = parsed_response&.dig('choices', 0, 'text')
+      parsed_response = JSON.parse(response.body)
+      @output_text = parsed_response.dig('choices', 0, 'text')
 
 
     render :index
